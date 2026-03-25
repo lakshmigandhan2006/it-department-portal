@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI, Depends, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -82,3 +83,7 @@ def on_startup():
 @app.get("/ping")
 def ping():
     return {"status": "ok"}
+@app.get("/")
+def root():
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/home")
