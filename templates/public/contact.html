@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - IT Department Portal{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5">
+            <h1 class="display-4 fw-bold">Get In <span class="text-gradient">Touch</span></h1>
+            <p class="lead text-muted">We are here to help you. Reach out to the department office for any inquiries.</p>
+        </div>
+    </div>
+
+    <div class="row g-5">
+        <div class="col-lg-5">
+            <div class="glass-card p-4 h-100">
+                <h3 class="fw-bold mb-4 text-dark">Contact Information</h3>
+                
+                <div class="d-flex mb-4 align-items-center">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                        <i class="fa-solid fa-location-dot fs-5"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-semibold mb-1">Office Location</h5>
+                        <p class="text-secondary mb-0">IT Block, 2nd Floor, Main Campus</p>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 align-items-center">
+                    <div class="bg-success bg-opacity-10 text-success rounded-circle p-3 me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                        <i class="fa-solid fa-envelope fs-5"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-semibold mb-1">Email Address</h5>
+                        <p class="text-secondary mb-0">hod_it@college.edu</p>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-4 align-items-center">
+                    <div class="bg-info bg-opacity-10 text-info rounded-circle p-3 me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                        <i class="fa-solid fa-phone fs-5"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-semibold mb-1">Phone Number</h5>
+                        <p class="text-secondary mb-0">+91 (123) 456-7890</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="glass-card p-4 h-100">
+                <h3 class="fw-bold mb-4 text-dark">Send a Message</h3>
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-secondary fw-semibold">Your Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-secondary fw-semibold">Your Email</label>
+                            <input type="email" class="form-control" placeholder="john@example.com">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label text-secondary fw-semibold">Subject</label>
+                            <input type="text" class="form-control" placeholder="Inquiry about admissions">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label text-secondary fw-semibold">Message</label>
+                            <textarea class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="button" class="btn btn-gradient w-100">Send Message <i class="fa-solid fa-paper-plane ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

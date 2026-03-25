@@ -1,0 +1,52 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Study Materials{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Upload Material</h5>
+    <form action="/admin/materials/add" method="post" enctype="multipart/form-data" class="row g-3">
+        <div class="col-md-4">
+            <input type="text" name="title" class="form-control" placeholder="Material Title" required>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="course_code" class="form-control" placeholder="Course Code" required>
+        </div>
+        <div class="col-md-4">
+            <input type="file" name="file" class="form-control" required>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-gradient w-100"><i class="fa-solid fa-upload"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Course</th>
+                <th>Upload Date</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in materials %}
+            <tr>
+                <td class="fw-semibold d-flex align-items-center"><i class="fa-solid fa-file-pdf text-danger fa-2x me-3"></i>{{ m.title }}</td>
+                <td class="fw-bold text-primary">{{ m.course_code }}</td>
+                <td class="text-muted">{{ m.uploaded_at.strftime('%Y-%m-%d') }}</td>
+                <td class="text-end">
+                    <a href="/{{ m.file_path }}" target="_blank" class="btn btn-sm btn-light text-primary rounded-circle me-1" title="Download"><i class="fa-solid fa-download"></i></a>
+                    <a href="/admin/materials/edit/{{ m.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/materials/delete/{{ m.id }}" class="btn btn-sm btn-light text-danger rounded-circle" title="Delete" onclick="return confirm('Remove file?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center py-4 text-muted">No study materials uploaded.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

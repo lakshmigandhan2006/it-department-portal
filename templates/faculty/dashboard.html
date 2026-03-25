@@ -1,0 +1,130 @@
+{% extends "faculty/faculty_base.html" %}
+
+{% block header %}Dashboard Overview{% endblock %}
+
+{% block faculty_content %}
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="glass-card p-4 h-100">
+            <div class="small fw-bold text-secondary mb-1">Total Students</div>
+            <div class="h2 fw-bold text-primary mb-0">{{ stats.students }}</div>
+            <div class="mt-2 small text-success"><i class="fa-solid fa-users me-1"></i> Department wide</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 h-100">
+            <div class="small fw-bold text-secondary mb-1">Attendance Today</div>
+            <div class="h2 fw-bold text-success mb-0">{{ stats.attendance }}</div>
+            <div class="mt-2 small text-muted">Marked by you</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 h-100">
+            <div class="small fw-bold text-secondary mb-1">Materials</div>
+            <div class="h2 fw-bold text-info mb-0">{{ stats.materials }}</div>
+            <div class="mt-2 small text-muted">Your uploads</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-card p-4 h-100">
+            <div class="small fw-bold text-secondary mb-1">Notices</div>
+            <div class="h2 fw-bold text-warning mb-0">{{ stats.notices }}</div>
+            <div class="mt-2 small text-muted">Active posts</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Smart Assistant Section -->
+    <div class="col-lg-8">
+        <div class="glass-card p-4 mb-4 border-0" style="background: linear-gradient(135deg, #fff, #f8fafc);">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-robot me-2 text-primary"></i> Smart Assistant</h5>
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">AI Powered</span>
+            </div>
+            
+            <div class="row g-3">
+                {% for msg in smart_messages %}
+                <div class="col-12 animate-fade-in" style="--delay: {{ loop.index0 * 0.1 }}s; animation-delay: var(--delay);">
+                    <div class="d-flex align-items-center p-3 rounded-4 bg-white border shadow-sm hover-lift">
+                        <div class="bg-{{ msg.color }} bg-opacity-10 text-{{ msg.color }} rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
+                            <i class="fa-solid {{ msg.icon }}"></i>
+                        </div>
+                        <div class="fw-semibold text-dark">{{ msg.text }}</div>
+                        <i class="fa-solid fa-chevron-right ms-auto text-muted small"></i>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Quick Stats / Recently Active Students -->
+        <div class="glass-card p-4">
+            <h5 class="fw-bold mb-3">Quick Actions</h5>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <a href="/faculty/attendance" class="btn btn-light w-100 py-3 rounded-4 border hover-lift">
+                        <i class="fa-solid fa-calendar-check fa-2x mb-2 text-primary"></i>
+                        <div class="fw-bold">Mark Attendance</div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/faculty/materials" class="btn btn-light w-100 py-3 rounded-4 border hover-lift">
+                        <i class="fa-solid fa-file-arrow-up fa-2x mb-2 text-success"></i>
+                        <div class="fw-bold">Upload Material</div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/faculty/notices" class="btn btn-light w-100 py-3 rounded-4 border hover-lift">
+                        <i class="fa-solid fa-paper-plane fa-2x mb-2 text-warning"></i>
+                        <div class="fw-bold">Post Notice</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Profile & Department Info -->
+    <div class="col-lg-4">
+        <div class="glass-card p-4 mb-4 text-center">
+            <div class="mb-3">
+                {% if faculty.photo %}
+                <img src="/{{ faculty.photo }}" alt="." class="rounded-circle border p-1" style="width: 100px; height: 100px; object-fit: cover;">
+                {% else %}
+                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center border" style="width: 100px; height: 100px;">
+                    <i class="fa-solid fa-user fa-3x"></i>
+                </div>
+                {% endif %}
+            </div>
+            <h5 class="fw-bold mb-1">{{ faculty.name }}</h5>
+            <p class="text-muted small mb-3">{{ faculty.designation }}</p>
+            <div class="row g-2 text-start">
+                <div class="col-12 bg-light p-2 rounded-3 border small">
+                    <span class="text-muted"><i class="fa-solid fa-book me-2"></i> Subject:</span> <span class="fw-bold">{{ faculty.subject }}</span>
+                </div>
+                <div class="col-12 bg-light p-2 rounded-3 border small">
+                    <span class="text-muted"><i class="fa-solid fa-building me-2"></i> Dept:</span> <span class="fw-bold">{{ faculty.department }}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="glass-card p-4">
+            <h6 class="fw-bold mb-3"><i class="fa-solid fa-chart-line me-2 text-danger"></i> Performance Watch</h6>
+            <div class="alert alert-warning border-0 rounded-4 small">
+                <i class="fa-solid fa-info-circle me-1"></i> Weekly summary will be available soon.
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s forwards;
+}
+</style>
+{% endblock %}

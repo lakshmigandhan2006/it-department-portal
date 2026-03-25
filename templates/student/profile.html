@@ -1,0 +1,85 @@
+{% extends "student/student_base.html" %}
+
+{% block header %}My Profile{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4">
+    <div class="d-flex align-items-center mb-4 pb-3 border-bottom border-primary border-3 w-100 justify-content-between">
+        <h4 class="fw-bold text-dark mb-0"><i class="fa-solid fa-user text-primary me-2"></i>Personal Details</h4>
+        <a href="/student/profile/id_card" target="_blank" class="btn btn-outline-primary"><i class="fa-solid fa-id-card me-2"></i>Download ID Card</a>
+    </div>
+    
+    <div class="row g-4 d-flex align-items-start">
+        <div class="col-md-3 text-center mb-3">
+            {% if student.photo %}
+            <img src="/{{ student.photo }}" alt="Student Photo" class="img-thumbnail rounded-circle mb-2" style="width: 150px; height: 150px; object-fit: cover;">
+            {% else %}
+            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 text-primary border" style="width: 150px; height: 150px; font-size: 3rem;">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            {% endif %}
+            <h5 class="fw-bold text-dark mt-2">{{ student.name }}</h5>
+            <span class="badge bg-primary px-3 py-2">{{ student.umis_id }}</span>
+        </div>
+        <div class="col-md-9 row g-4">
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">Full Name</p>
+                <p class="fw-bold text-dark">{{ student.name }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">UMIS ID</p>
+                <p class="fw-bold text-dark">{{ student.umis_id }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">Roll Number</p>
+                <p class="fw-bold text-dark">{{ student.roll_no }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">Date of Birth</p>
+                <p class="fw-bold text-dark">{{ student.dob }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">Gender</p>
+                <p class="fw-bold text-dark">{{ student.gender }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">Blood Group</p>
+                <p class="fw-bold text-dark text-danger">{{ student.blood_group }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">Hostel Status</p>
+                <p class="fw-bold text-dark">{{ student.hostel_status }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-secondary small mb-1 fw-semibold">Community</p>
+                <p class="fw-bold text-dark">{{ student.community }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="glass-card p-4 border border-danger border-opacity-25 rounded-3 bg-white" style="box-shadow: 0 4px 20px rgba(220, 53, 69, 0.05);">
+    <div class="d-flex align-items-center mb-4 pb-3 border-bottom border-danger border-3" style="width: max-content;">
+        <h4 class="fw-bold text-danger mb-0"><i class="fa-solid fa-lock me-2"></i>Secure & Contact Information</h4>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <p class="text-danger small mb-1 fw-bold"><i class="fa-solid fa-shield-halved me-1"></i>Aadhaar Number (Decrypted)</p>
+            <p class="fw-bold text-dark fs-5">{{ student.aadhaar }}</p>
+        </div>
+        <div class="col-md-4">
+            <p class="text-danger small mb-1 fw-bold"><i class="fa-solid fa-phone me-1"></i>Student Phone (Decrypted)</p>
+            <p class="fw-bold text-dark fs-5">{{ student.student_phone }}</p>
+        </div>
+        <div class="col-md-4">
+            <p class="text-danger small mb-1 fw-bold"><i class="fa-solid fa-phone me-1"></i>Parent Phone (Decrypted)</p>
+            <p class="fw-bold text-dark fs-5">{{ student.parent_phone }}</p>
+        </div>
+        <div class="col-md-12">
+            <p class="text-danger small mb-1 fw-bold"><i class="fa-solid fa-house me-1"></i>Home Address (Decrypted)</p>
+            <p class="fw-bold text-dark p-3 bg-light rounded text-dark fs-6">{{ student.address }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

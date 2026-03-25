@@ -1,0 +1,73 @@
+{% extends "student/student_base.html" %}
+
+{% block header %}Welcome back, {{ student.name }}!{% endblock %}
+
+{% block content %}
+<div class="row g-4 mb-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="glass-card stat-card">
+            <h3 class="stat-value text-success">{{ student.attendance_percentage }}%</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-clipboard-user me-2"></i>Attendance</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="glass-card stat-card">
+            <h3 class="stat-value text-primary">{{ student.last_sem_percentage }}%</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-graduation-cap me-2"></i>Last Sem SGPA</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="glass-card stat-card">
+            <h3 class="stat-value text-info">{{ student.year }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-layer-group me-2"></i>Current Year</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="glass-card stat-card">
+            <h3 class="stat-value text-warning text-truncate" style="max-width: 100%;">{{ student.scholarship_status }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-award me-2"></i>Scholarship</p>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+            <h5 class="fw-bold mb-4 border-bottom pb-2"><i class="fa-solid fa-bell text-danger me-2"></i>Recent Notices</h5>
+            <div class="list-group list-group-flush">
+                {% for notice in notices %}
+                <div class="list-group-item px-0 border-light py-3">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1 fw-bold text-dark">{{ notice.title }}</h6>
+                        <small class="text-muted">{{ notice.date_posted.strftime('%d %b') }}</small>
+                    </div>
+                    <p class="mb-1 text-secondary small text-truncate" style="max-width: 90%;">{{ notice.content }}</p>
+                </div>
+                {% else %}
+                <p class="text-muted text-center py-3">No recent notices available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+            <h5 class="fw-bold mb-4 border-bottom pb-2"><i class="fa-solid fa-file-pdf text-danger me-2"></i>Recent Materials</h5>
+            <div class="list-group list-group-flush">
+                {% for m in materials %}
+                <a href="/{{ m.file_path }}" target="_blank" class="list-group-item list-group-item-action px-0 border-light py-3 d-flex align-items-center">
+                    <div class="bg-danger bg-opacity-10 text-danger rounded p-2 me-3">
+                        <i class="fa-solid fa-file-pdf text-danger fa-lg"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-0 fw-bold text-dark">{{ m.title }}</h6>
+                        <small class="text-primary fw-semibold">{{ m.course_code }}</small>
+                    </div>
+                </a>
+                {% else %}
+                <p class="text-muted text-center py-3">No study materials uploaded recently.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Achievements - IT Department Portal{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Student <span class="text-gradient">Achievements</span></h1>
+        <p class="lead text-muted">Celebrating excellence and making the department proud.</p>
+    </div>
+
+    <div class="row g-4">
+        {% for achievement in achievements %}
+        <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100 position-relative">
+                <div class="position-absolute top-0 end-0 p-3">
+                    <i class="fa-solid fa-medal fa-2x text-warning"></i>
+                </div>
+                <h4 class="fw-bold text-dark mt-2 pe-4">{{ achievement.title }}</h4>
+                <p class="text-primary fw-semibold mb-2"><i class="fa-solid fa-user-graduate me-2"></i>{{ achievement.student_name }}</p>
+                <p class="text-secondary small mb-3">{{ achievement.description }}</p>
+                <div class="mt-auto border-top pt-3">
+                    <small class="text-muted"><i class="fa-regular fa-calendar me-2"></i>{{ achievement.date }}</small>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <p class="text-muted fs-5">No achievements recorded yet. Check back soon!</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

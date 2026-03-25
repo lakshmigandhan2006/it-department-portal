@@ -1,0 +1,58 @@
+{% extends "faculty/faculty_base.html" %}
+
+{% block header %}Study Materials{% endblock %}
+
+{% block faculty_content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Upload New Material</h5>
+    <form action="/faculty/materials/upload" method="post" enctype="multipart/form-data" class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label small fw-bold text-muted">Title</label>
+            <input type="text" name="title" class="form-control" placeholder="e.g. Unit 1 Introduction" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Course Code</label>
+            <input type="text" name="course_code" class="form-control" placeholder="e.g. CS101" required>
+        </div>
+        <div class="col-md-5">
+            <label class="form-label small fw-bold text-muted">Description</label>
+            <input type="text" name="description" class="form-control" placeholder="Brief details about the file">
+        </div>
+        <div class="col-md-10">
+            <label class="form-label small fw-bold text-muted">File (PDF, PPT, DOCX)</label>
+            <input type="file" name="file" class="form-control" required>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-gradient w-100 py-2"><i class="fa-solid fa-upload me-2"></i> Upload</button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Course</th>
+                <th>Date</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materials %}
+            <tr>
+                <td class="fw-semibold text-dark">{{ material.title }}</td>
+                <td><span class="badge bg-light text-dark border">{{ material.course_code }}</span></td>
+                <td class="text-muted small">{{ material.uploaded_at.strftime('%d %b %Y') }}</td>
+                <td class="text-end">
+                    <a href="/{{ material.file_path }}" target="_blank" class="btn btn-sm btn-light text-info me-1 rounded-circle"><i class="fa-solid fa-eye"></i></a>
+                    <a href="/faculty/materials/delete/{{ material.id }}" class="btn btn-sm btn-light text-danger rounded-circle" onclick="return confirm('Delete this material?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center py-4 text-muted">No materials uploaded yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

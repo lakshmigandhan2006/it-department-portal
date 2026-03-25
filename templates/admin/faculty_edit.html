@@ -1,0 +1,56 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Edit Faculty: {{ faculty.name }}{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mx-auto" style="max-width: 600px;">
+    <h5 class="fw-bold mb-3">Edit Faculty Details</h5>
+    <form action="/admin/faculty/edit/{{ faculty.id }}" method="post" enctype="multipart/form-data" class="row g-3">
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Full Name</label>
+            <input type="text" name="name" class="form-control" value="{{ faculty.name }}" required>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Designation</label>
+            <input type="text" name="designation" class="form-control" value="{{ faculty.designation }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Email Address</label>
+            <input type="email" name="email" class="form-control" value="{{ faculty.email }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Phone Number</label>
+            <input type="text" name="phone" class="form-control" value="{{ faculty.phone }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Subject</label>
+            <input type="text" name="subject" class="form-control" value="{{ faculty.subject }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Department</label>
+            <input type="text" name="department" class="form-control" value="{{ faculty.department }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Username</label>
+            <input type="text" name="username" class="form-control" value="{{ faculty.username }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">New Password (Leave blank to keep current)</label>
+            <input type="password" name="password" class="form-control" placeholder="New Password">
+        </div>
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Update Photo</label>
+            <input type="file" name="photo" class="form-control" accept="image/*">
+            {% if faculty.photo %}
+            <div class="mt-2 text-muted small">
+                Current photo: <img src="/{{ faculty.photo }}" alt="Faculty Photo" class="rounded ms-2" style="width: 40px; height: 40px; object-fit: cover;">
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-12 text-end mt-4">
+            <a href="/admin/faculty" class="btn btn-light px-4 me-2 border">Cancel</a>
+            <button type="submit" class="btn btn-gradient px-4"><i class="fa-solid fa-save me-2"></i> Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Timetable Registry{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4 border-top border-4 border-info">
+    <h5 class="fw-bold mb-3">Add Schedule Entry</h5>
+    <form action="/admin/timetable/add" method="post" class="row g-3">
+        <div class="col-md-2">
+            <select name="day_of_week" class="form-select form-control">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="time_slot" class="form-control" placeholder="e.g. 09-10 AM" required>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="course_code" class="form-control" placeholder="Course" required>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="faculty_name" class="form-control" placeholder="Faculty" required>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="room_no" class="form-control" placeholder="Room/Lab" required>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-gradient w-100"><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Time Slot</th>
+                <th>Course</th>
+                <th>Faculty</th>
+                <th>Room</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td class="fw-bold">{{ entry.day_of_week }}</td>
+                <td class="text-muted"><i class="fa-regular fa-clock me-1"></i> {{ entry.time_slot }}</td>
+                <td class="fw-semibold text-primary">{{ entry.course_code }}</td>
+                <td>{{ entry.faculty_name }}</td>
+                <td><span class="badge bg-light text-dark border"><i class="fa-solid fa-door-open me-1"></i>{{ entry.room_no }}</span></td>
+                <td class="text-end">
+                    <a href="/admin/timetable/edit/{{ entry.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/timetable/delete/{{ entry.id }}" class="btn btn-sm btn-light text-danger rounded-circle" title="Delete" onclick="return confirm('Remove?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6" class="text-center py-4 text-muted">No timetable entries found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "student/student_base.html" %}
+
+{% block header %}Class Timetable{% endblock %}
+
+{% block content %}
+<div class="glass-card p-0 mb-4 overflow-hidden">
+    <div class="table-responsive table-glass">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Day</th>
+                    <th>Time Slot</th>
+                    <th>Course Code</th>
+                    <th>Faculty Name</th>
+                    <th>Room / Lab</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in timetable %}
+                <tr>
+                    <td class="fw-bold text-dark">{{ entry.day_of_week }}</td>
+                    <td class="fw-semibold text-primary"><i class="fa-regular fa-clock me-2"></i>{{ entry.time_slot }}</td>
+                    <td class="fw-bold">{{ entry.course_code }}</td>
+                    <td>{{ entry.faculty_name }}</td>
+                    <td><span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-door-open me-2"></i>{{ entry.room_no }}</span></td>
+                </tr>
+                {% else %}
+                <tr><td colspan="5" class="text-center py-5 text-muted">Timetable not available yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

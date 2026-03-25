@@ -1,0 +1,42 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Edit Timetable Entry{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mx-auto" style="max-width: 600px;">
+    <h5 class="fw-bold mb-3">Edit Schedule Details</h5>
+    <form action="/admin/timetable/edit/{{ entry.id }}" method="post" class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Day of Week</label>
+            <select name="day_of_week" class="form-select form-control">
+                <option value="Monday" {% if entry.day_of_week == 'Monday' %}selected{% endif %}>Monday</option>
+                <option value="Tuesday" {% if entry.day_of_week == 'Tuesday' %}selected{% endif %}>Tuesday</option>
+                <option value="Wednesday" {% if entry.day_of_week == 'Wednesday' %}selected{% endif %}>Wednesday</option>
+                <option value="Thursday" {% if entry.day_of_week == 'Thursday' %}selected{% endif %}>Thursday</option>
+                <option value="Friday" {% if entry.day_of_week == 'Friday' %}selected{% endif %}>Friday</option>
+                <option value="Saturday" {% if entry.day_of_week == 'Saturday' %}selected{% endif %}>Saturday</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Time Slot</label>
+            <input type="text" name="time_slot" class="form-control" value="{{ entry.time_slot }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Course Code</label>
+            <input type="text" name="course_code" class="form-control" value="{{ entry.course_code }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Faculty Name</label>
+            <input type="text" name="faculty_name" class="form-control" value="{{ entry.faculty_name }}" required>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Room No.</label>
+            <input type="text" name="room_no" class="form-control" value="{{ entry.room_no }}" required>
+        </div>
+        <div class="col-md-12 text-end mt-4">
+            <a href="/admin/timetable" class="btn btn-light px-4 me-2 border">Cancel</a>
+            <button type="submit" class="btn btn-gradient px-4"><i class="fa-solid fa-save me-2"></i> Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - IT Dept</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="px-4 mb-4 text-center">
+                <h4 class="fw-bold text-gradient mb-0"><i class="fa-solid fa-shield-halved me-2"></i>Admin Panel</h4>
+                <small class="text-muted">IT Dept Portal</small>
+            </div>
+            
+            <a href="/admin" class="{{ 'active' if request.url.path == '/admin' else '' }}">
+                <i class="fa-solid fa-chart-pie me-2"></i> Dashboard
+            </a>
+            <a href="/admin/students" class="{{ 'active' if '/admin/students' in request.url.path else '' }}">
+                <i class="fa-solid fa-user-graduate me-2"></i> Students
+            </a>
+            <a href="/admin/faculty" class="{{ 'active' if '/admin/faculty' in request.url.path else '' }}">
+                <i class="fa-solid fa-chalkboard-user me-2"></i> Faculty
+            </a>
+            <a href="/admin/syllabus" class="{{ 'active' if '/admin/syllabus' in request.url.path else '' }}">
+                <i class="fa-solid fa-book-open me-2"></i> Syllabus
+            </a>
+            <a href="/admin/exams" class="{{ 'active' if '/admin/exams' in request.url.path else '' }}">
+                <i class="fa-solid fa-file-signature me-2"></i> Exams
+            </a>
+            <a href="/admin/materials" class="{{ 'active' if '/admin/materials' in request.url.path else '' }}">
+                <i class="fa-solid fa-file-pdf me-2"></i> Study Materials
+            </a>
+            <a href="/admin/notices" class="{{ 'active' if '/admin/notices' in request.url.path else '' }}">
+                <i class="fa-solid fa-bullhorn me-2"></i> Notices
+            </a>
+            <a href="/admin/achievements" class="{{ 'active' if '/admin/achievements' in request.url.path else '' }}">
+                <i class="fa-solid fa-trophy me-2"></i> Achievements
+            </a>
+            <a href="/admin/timetable" class="{{ 'active' if '/admin/timetable' in request.url.path else '' }}">
+                <i class="fa-solid fa-calendar-days me-2"></i> Timetable
+            </a>
+            
+            <div class="mt-auto p-4">
+                <a href="/admin-auth/logout" class="btn btn-outline-danger w-100 rounded-pill">
+                    <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold text-dark mb-0">{% block header %}Dashboard{% endblock %}</h2>
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle align-items-center justify-content-center d-flex me-2" style="width: 40px; height: 40px;">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <span class="fw-semibold">Administrator</span>
+                </div>
+            </div>
+            
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

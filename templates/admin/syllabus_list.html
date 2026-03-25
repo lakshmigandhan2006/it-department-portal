@@ -1,0 +1,56 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Manage Syllabus{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Add Syllabus Entry</h5>
+    <form action="/admin/syllabus/add" method="post" class="row g-3">
+        <div class="col-md-3">
+            <input type="text" name="course_name" class="form-control" placeholder="Course Name" required>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="course_code" class="form-control" placeholder="Code (e.g. IT301)" required>
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="semester" class="form-control" placeholder="Semester (1-8)" required min="1" max="8">
+        </div>
+        <div class="col-md-4">
+            <input type="text" name="description" class="form-control" placeholder="Short description/Topics" required>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-gradient w-100"><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Sem</th>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in syllabi %}
+            <tr>
+                <td><span class="badge bg-primary rounded-circle p-2">{{ s.semester }}</span></td>
+                <td class="fw-bold">{{ s.course_code }}</td>
+                <td class="fw-semibold text-dark">{{ s.course_name }}</td>
+                <td class="text-muted small">{{ s.description }}</td>
+                <td class="text-end">
+                    <a href="/admin/syllabus/edit/{{ s.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/syllabus/delete/{{ s.id }}" class="btn btn-sm btn-light text-danger rounded-circle" title="Delete" onclick="return confirm('Remove?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="text-center py-4 text-muted">No syllabus entries found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

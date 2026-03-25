@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Faculty - IT Department Portal{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Meet Our <span class="text-gradient">Faculty</span></h1>
+        <p class="lead text-muted">World-class educators and researchers at your service.</p>
+    </div>
+
+    <div class="row g-4">
+        {% for faculty in faculties %}
+        <div class="col-md-6 col-lg-4">
+            <div class="glass-card text-center p-4">
+                <div class="mb-3">
+                    {% if faculty.photo %}
+                    <img src="/{{ faculty.photo }}" alt="{{ faculty.name }}" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--primary-blue);">
+                    {% else %}
+                    <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px; border: 4px solid var(--primary-blue);">
+                        <i class="fa-solid fa-user-tie fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                <h4 class="fw-bold mb-1">{{ faculty.name }}</h4>
+                <p class="text-primary fw-semibold mb-2">{{ faculty.designation }}</p>
+                <div class="text-muted small">
+                    <p class="mb-1"><i class="fa-solid fa-envelope me-2"></i>{{ faculty.email }}</p>
+                    <p class="mb-0"><i class="fa-solid fa-phone me-2"></i>{{ faculty.phone }}</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <p class="text-muted fs-5">No faculty members to display currently.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

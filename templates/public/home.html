@@ -1,0 +1,365 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 2. HERO SECTION -->
+<div class="container-fluid hero-section-bg py-5 position-relative overflow-hidden border-bottom border-light">
+    <!-- Decorative background blobs -->
+    <div class="position-absolute top-0 start-0 translate-middle rounded-circle bg-danger opacity-10" style="width: 500px; height: 500px; filter: blur(80px);"></div>
+    <div class="position-absolute top-100 start-100 translate-middle rounded-circle bg-danger opacity-10" style="width: 400px; height: 400px; filter: blur(60px);"></div>
+    
+    <div class="container py-5 my-md-5 position-relative z-index-1">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge badge-academic px-3 py-2 rounded-pill mb-4 fw-medium border border-danger border-opacity-25">Official Department Portal</span>
+                <h1 class="display-3 fw-bold mb-4 tracking-tight text-dark" style="line-height: 1.2;">
+                    Welcome to the <br>
+                    <span class="text-gradient hero-gradient-text">IT Department Portal</span>
+                </h1>
+                <p class="lead mb-5 text-secondary px-lg-5 fs-4">
+                    Empowering students with next-generation academic tools and resources. Manage your syllabus, track your results, and stay updated.
+                </p>
+                <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
+                    <a href="/student-auth/login" class="btn btn-academic btn-lg px-5 hover-lift shadow rounded-pill">Student Portal</a>
+                    <a href="/about" class="btn btn-outline-academic btn-lg px-5 hover-lift shadow-sm rounded-pill">Explore Department</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 3. QUICK STATS SECTION -->
+<div class="container py-5 mt-neg-5 position-relative z-index-2" style="margin-top: -50px;">
+    <div class="row g-4 text-center">
+        <!-- Stat 1 -->
+        <div class="col-6 col-md-3">
+            <div class="glass-card p-4 h-100 glass-card-hover bg-white text-center rounded-4 border-0 shadow-sm border border-secondary border-opacity-10">
+                <div class="display-6 text-primary mb-2 fw-bold"><i class="fa-solid fa-users text-opacity-75"></i></div>
+                <h2 class="h3 fw-bolder text-dark mb-1">450+</h2>
+                <p class="text-muted small fw-medium mb-0 text-uppercase tracking-wider">Students</p>
+            </div>
+        </div>
+        <!-- Stat 2 -->
+        <div class="col-6 col-md-3">
+            <div class="glass-card p-4 h-100 glass-card-hover bg-white text-center rounded-4 border-0 shadow-sm border border-secondary border-opacity-10">
+                <div class="display-6 text-info mb-2 fw-bold"><i class="fa-solid fa-chalkboard-user text-opacity-75"></i></div>
+                <h2 class="h3 fw-bolder text-dark mb-1">20+</h2>
+                <p class="text-muted small fw-medium mb-0 text-uppercase tracking-wider">Faculty</p>
+            </div>
+        </div>
+        <!-- Stat 3 -->
+        <div class="col-6 col-md-3">
+            <div class="glass-card p-4 h-100 glass-card-hover bg-white text-center rounded-4 border-0 shadow-sm border border-secondary border-opacity-10">
+                <div class="display-6 text-success mb-2 fw-bold"><i class="fa-solid fa-book-open text-opacity-75"></i></div>
+                <h2 class="h3 fw-bolder text-dark mb-1">300+</h2>
+                <p class="text-muted small fw-medium mb-0 text-uppercase tracking-wider">Materials</p>
+            </div>
+        </div>
+        <!-- Stat 4 -->
+        <div class="col-6 col-md-3">
+            <div class="glass-card p-4 h-100 glass-card-hover bg-white text-center rounded-4 border-0 shadow-sm border border-secondary border-opacity-10">
+                <div class="display-6 text-warning mb-2 fw-bold"><i class="fa-solid fa-trophy text-opacity-75"></i></div>
+                <h2 class="h3 fw-bolder text-dark mb-1">85+</h2>
+                <p class="text-muted small fw-medium mb-0 text-uppercase tracking-wider">Achievements</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 4. ACADEMIC SERVICES SECTION -->
+<div class="container py-5 my-4">
+    <div class="row align-items-end mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h6 class="text-primary fw-bold text-uppercase tracking-wider mb-2">Platform Features</h6>
+            <h2 class="display-5 fw-bold text-dark">Academic Services</h2>
+        </div>
+    </div>
+    <div class="row g-4">
+        <!-- Service 1 -->
+        <div class="col-md-4">
+            <div class="glass-card p-5 h-100 glass-card-hover bg-white border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+                <div class="position-absolute top-0 end-0 p-3 opacity-10 text-primary display-1"><i class="fa-solid fa-book-open"></i></div>
+                <div class="text-white bg-primary bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-4 shadow" style="width: 50px; height: 50px;">
+                    <i class="fa-solid fa-book-open fs-5"></i>
+                </div>
+                <h3 class="h4 fw-bold text-dark mb-3">Academic Resources</h3>
+                <p class="text-secondary mb-0">Access syllabus, study materials, and previous year question papers instantly.</p>
+            </div>
+        </div>
+        <!-- Service 2 -->
+        <div class="col-md-4">
+            <div class="glass-card p-5 h-100 glass-card-hover bg-white border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+                <div class="position-absolute top-0 end-0 p-3 opacity-10 text-info display-1"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="text-white bg-info bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-4 shadow" style="width: 50px; height: 50px;">
+                    <i class="fa-solid fa-bullhorn fs-5"></i>
+                </div>
+                <h3 class="h4 fw-bold text-dark mb-3">Latest Updates</h3>
+                <p class="text-secondary mb-0">Stay informed with real-time notifications about exams, events, and holidays.</p>
+            </div>
+        </div>
+        <!-- Service 3 -->
+        <div class="col-md-4">
+            <div class="glass-card p-5 h-100 glass-card-hover bg-white border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+                <div class="position-absolute top-0 end-0 p-3 opacity-10 text-success display-1"><i class="fa-solid fa-trophy"></i></div>
+                <div class="text-white bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-4 shadow" style="width: 50px; height: 50px;">
+                    <i class="fa-solid fa-trophy fs-5"></i>
+                </div>
+                <h3 class="h4 fw-bold text-dark mb-3">Achievements</h3>
+                <p class="text-secondary mb-0">Celebrate the success of our students and faculty on a global stage.</p>
+            </div>
+        </div>
+        <!-- Service 4 -->
+        <div class="col-md-4">
+            <div class="glass-card p-5 h-100 glass-card-hover bg-white border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+                <div class="position-absolute top-0 end-0 p-3 opacity-10 text-warning display-1"><i class="fa-regular fa-folder-open"></i></div>
+                <div class="text-white bg-warning bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-4 shadow" style="width: 50px; height: 50px;">
+                    <i class="fa-regular fa-folder-open fs-5"></i>
+                </div>
+                <h3 class="h4 fw-bold text-dark mb-3">Study Materials</h3>
+                <p class="text-secondary mb-0">Download faculty-approved notes, presentations, and resources.</p>
+            </div>
+        </div>
+        <!-- Service 5 -->
+        <div class="col-md-4">
+            <div class="glass-card p-5 h-100 glass-card-hover bg-white border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+                <div class="position-absolute top-0 end-0 p-3 opacity-10 text-danger display-1"><i class="fa-regular fa-calendar-check"></i></div>
+                <div class="text-white bg-danger bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-4 shadow" style="width: 50px; height: 50px;">
+                    <i class="fa-regular fa-calendar-check fs-5"></i>
+                </div>
+                <h3 class="h4 fw-bold text-dark mb-3">Exam Schedule</h3>
+                <p class="text-secondary mb-0">Check your upcoming internal assessments and end-semester timetables.</p>
+            </div>
+        </div>
+        <!-- Service 6 -->
+        <div class="col-md-4">
+            <div class="glass-card p-5 h-100 glass-card-hover bg-white border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+                <div class="position-absolute top-0 end-0 p-3 opacity-10 text-secondary display-1"><i class="fa-solid fa-list-check"></i></div>
+                <div class="text-white bg-secondary bg-gradient d-inline-flex align-items-center justify-content-center rounded-3 mb-4 shadow" style="width: 50px; height: 50px;">
+                    <i class="fa-solid fa-list-check fs-5"></i>
+                </div>
+                <h3 class="h4 fw-bold text-dark mb-3">Syllabus</h3>
+                <p class="text-secondary mb-0">Complete course details and curriculum structure for all academic years.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 5. FACULTY PREVIEW SECTION -->
+<div class="bg-white py-5 border-top border-light">
+    <div class="container py-5">
+        <div class="row align-items-center mb-5">
+            <div class="col-md-8">
+                <h6 class="text-primary fw-bold text-uppercase tracking-wider mb-2">Our Experts</h6>
+                <h2 class="display-6 fw-bold text-dark mb-0">Meet Our Faculty</h2>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <a href="/faculty" class="btn btn-outline-primary rounded-pill px-4 hover-lift">View All Faculty <i class="fa-solid fa-arrow-right ms-2 small"></i></a>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for faculty in faculties %}
+            <div class="col-md-3 col-sm-6">
+                <div class="glass-card bg-white border-0 shadow-sm rounded-4 overflow-hidden h-100 text-center glass-card-hover">
+                    <div class="p-4 pb-0">
+                        <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center mb-3 shadow-sm border border-white border-4" style="width: 120px; height: 120px; overflow: hidden;">
+                            {% if faculty.photo %}
+                                <img src="/{{ faculty.photo }}" alt="{{ faculty.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                            {% else %}
+                                <i class="fa-solid fa-user-tie fa-3x text-secondary opacity-50"></i>
+                            {% endif %}
+                        </div>
+                        <h4 class="h5 fw-bold text-dark mb-1">{{ faculty.name }}</h4>
+                        <p class="text-primary small fw-medium mb-3">{{ faculty.designation }}</p>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12 text-center text-muted">
+                <p>No faculty members available yet.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- 6. LATEST NOTICES SECTION -->
+<div class="container py-5 my-4">
+    <div class="row align-items-center mb-5">
+        <div class="col-md-8">
+            <h6 class="text-info fw-bold text-uppercase tracking-wider mb-2">Announcements</h6>
+            <h2 class="display-6 fw-bold text-dark mb-0">Latest Notices</h2>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <a href="/notices" class="btn btn-outline-info rounded-pill px-4 hover-lift">View All Notices <i class="fa-solid fa-arrow-right ms-2 small"></i></a>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <!-- Notice 1 -->
+        <div class="col-md-4">
+            <div class="glass-card bg-white border-0 shadow-sm rounded-4 p-4 h-100 glass-card-hover border-start border-warning border-4">
+                <div class="d-flex align-items-center mb-3 text-muted small">
+                    <i class="fa-regular fa-calendar me-2"></i> Oct 15, 2026
+                    <span class="badge bg-warning bg-opacity-10 text-warning ms-auto rounded-pill px-2 py-1">Exam</span>
+                </div>
+                <h4 class="h5 fw-bold text-dark mb-2">Internal Exam Schedule Released</h4>
+                <p class="text-secondary small mb-3">The schedule for the first continuous internal assessment has been published for all years.</p>
+            </div>
+        </div>
+        <!-- Notice 2 -->
+        <div class="col-md-4">
+            <div class="glass-card bg-white border-0 shadow-sm rounded-4 p-4 h-100 glass-card-hover border-start border-primary border-4">
+                <div class="d-flex align-items-center mb-3 text-muted small">
+                    <i class="fa-regular fa-calendar me-2"></i> Oct 12, 2026
+                    <span class="badge bg-primary bg-opacity-10 text-primary ms-auto rounded-pill px-2 py-1">Event</span>
+                </div>
+                <h4 class="h5 fw-bold text-dark mb-2">AI Workshop Registration Open</h4>
+                <p class="text-secondary small mb-3">Register for the upcoming hands-on workshop on generative AI. Limited seats available.</p>
+            </div>
+        </div>
+        <!-- Notice 3 -->
+        <div class="col-md-4">
+            <div class="glass-card bg-white border-0 shadow-sm rounded-4 p-4 h-100 glass-card-hover border-start border-success border-4">
+                <div class="d-flex align-items-center mb-3 text-muted small">
+                    <i class="fa-regular fa-calendar me-2"></i> Oct 10, 2026
+                    <span class="badge bg-success bg-opacity-10 text-success ms-auto rounded-pill px-2 py-1">Career</span>
+                </div>
+                <h4 class="h5 fw-bold text-dark mb-2">Internship Opportunities</h4>
+                <p class="text-secondary small mb-3">Top tech companies have posted summer internship opportunities for 3rd-year students.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 7. ACHIEVEMENTS SECTION -->
+<div class="bg-white py-5 border-top border-light position-relative overflow-hidden">
+    <div class="position-absolute bottom-0 end-0 translate-middle-y rounded-circle bg-success opacity-10" style="width: 400px; height: 400px; filter: blur(60px); margin-right: -100px;"></div>
+    
+    <div class="container py-5 position-relative z-index-1">
+        <div class="row align-items-center mb-5">
+            <div class="col-md-8">
+                <h6 class="text-success fw-bold text-uppercase tracking-wider mb-2">Hall of Fame</h6>
+                <h2 class="display-6 fw-bold text-dark mb-0">Recent Achievements</h2>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <a href="/achievements" class="btn btn-outline-success rounded-pill px-4 hover-lift">View All Trophies <i class="fa-solid fa-arrow-right ms-2 small"></i></a>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Achievement 1 -->
+            <div class="col-md-6 pb-3">
+                <div class="glass-card bg-white border-0 shadow-sm rounded-4 p-4 d-flex align-items-center glass-card-hover h-100">
+                    <div class="rounded-circle bg-success bg-gradient text-white d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 60px; height: 60px;">
+                        <i class="fa-solid fa-trophy fs-4"></i>
+                    </div>
+                    <div class="ms-4">
+                        <h4 class="h5 fw-bold text-dark mb-1">1st Place in National Hackathon</h4>
+                        <p class="text-secondary small mb-0">Our 3rd-year team won the Smart India Hackathon 2026 with their AI-driven accessibility tool.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Achievement 2 -->
+            <div class="col-md-6 pb-3">
+                <div class="glass-card bg-white border-0 shadow-sm rounded-4 p-4 d-flex align-items-center glass-card-hover h-100">
+                    <div class="rounded-circle bg-warning bg-gradient text-white d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 60px; height: 60px;">
+                        <i class="fa-solid fa-medal fs-4"></i>
+                    </div>
+                    <div class="ms-4">
+                        <h4 class="h5 fw-bold text-dark mb-1">Best Research Paper Award</h4>
+                        <p class="text-secondary small mb-0">Dr. S. Ramesh awarded at the International Conference on Cloud Computing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 8. CALL TO ACTION SECTION -->
+<div class="container py-5 my-5">
+    <div class="glass-card bg-primary bg-gradient rounded-5 p-5 text-center text-white shadow-lg overflow-hidden position-relative">
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="position-relative z-index-1 py-4">
+            <h2 class="display-5 fw-bold mb-3">Join the Student Portal</h2>
+            <p class="lead text-white-50 mb-4 px-lg-5 mx-lg-5">
+                Unlock your full academic potential. Log in to access personalized course materials, track your progress, and connect with faculty.
+            </p>
+            <a href="/student-auth/login" class="btn btn-light text-primary fw-bold btn-lg rounded-pill px-5 py-3 hover-lift shadow-sm">
+                Student Login <i class="fa-solid fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- 9. DEVELOPER TERMINAL SECTION -->
+<div class="container py-5 mb-5 position-relative z-index-2">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="rounded-4 overflow-hidden border-0" style="background-color: #020617; box-shadow: 0 0 40px rgba(34, 197, 94, 0.15), 0 20px 40px rgba(0,0,0,0.5);">
+                <!-- Terminal Header Bar (macOS style) -->
+                <div class="d-flex align-items-center px-3 py-2" style="background-color: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                    <div class="rounded-circle me-2" style="width: 12px; height: 12px; background-color: #EF4444;"></div>
+                    <div class="rounded-circle me-2" style="width: 12px; height: 12px; background-color: #F59E0B;"></div>
+                    <div class="rounded-circle me-2" style="width: 12px; height: 12px; background-color: #10B981;"></div>
+                    <div class="text-secondary small ms-2 font-monospace" style="font-size: 0.8rem;">developer@portal ~ zsh</div>
+                </div>
+                <!-- Terminal Body -->
+                <div class="p-4 p-md-5 font-monospace" style="color: #22C55E; min-height: 240px; font-size: 0.95rem; line-height: 1.6;">
+                    <span id="terminal-output" style="white-space: pre-wrap;"></span><span class="cursor-blink" id="terminal-cursor"></span>
+                </div>
+            </div>
+            <div class="text-center mt-4 text-muted small fw-medium">
+                👨‍💻 Developed by Lakshmigandhan M S
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const lines = [
+            "> Initializing IT Department Portal...",
+            "> Loading modules...",
+            "> Connecting database...",
+            "> Developer: Lakshmigandhan M S",
+            "> Role: Full Stack Developer",
+            "> System Ready \u2714"
+        ];
+        
+        const outputDiv = document.getElementById("terminal-output");
+        let currentLine = 0;
+        let currentChar = 0;
+        let typingDelay = 40; // Base typing speed in ms
+        let lineDelay = 600;  // Delay between lines in ms
+
+        function typeCharacter() {
+            if (currentLine < lines.length) {
+                if (currentChar < lines[currentLine].length) {
+                    // Append next character
+                    outputDiv.innerHTML += lines[currentLine].charAt(currentChar);
+                    currentChar++;
+                    // Randomize delay slightly for realistic typing effect
+                    let delay = typingDelay + Math.random() * 30;
+                    setTimeout(typeCharacter, delay);
+                } else {
+                    // Line finished, move to next line after delay
+                    outputDiv.innerHTML += "\n";
+                    currentLine++;
+                    currentChar = 0;
+                    setTimeout(typeCharacter, lineDelay);
+                }
+            } else {
+                // Formatting: make the "System Ready" line bold
+                outputDiv.innerHTML = outputDiv.innerHTML.replace("> System Ready \u2714", "<strong>> System Ready \u2714</strong>");
+            }
+        }
+
+        // Start typing animation after a small initial delay
+        setTimeout(typeCharacter, 800);
+    });
+</script>
+
+{% endblock %}

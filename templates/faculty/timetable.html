@@ -1,0 +1,52 @@
+{% extends "faculty/faculty_base.html" %}
+
+{% block header %}Class Timetable{% endblock %}
+
+{% block faculty_content %}
+<div class="glass-card p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="fw-bold mb-0">Your Weekly Schedule</h5>
+        <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill"><i class="fa-solid fa-clock me-1"></i> IST Timezone</span>
+    </div>
+
+    <div class="table-responsive table-glass rounded-4 overflow-hidden border">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light">
+                <tr>
+                    <th class="ps-4">Day</th>
+                    <th>Time Slot</th>
+                    <th>Course Code</th>
+                    <th>Faculty</th>
+                    <th class="text-center">Room No</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                <tr {% if entry.faculty_name == faculty.name %}class="table-primary table-opacity-10"{% endif %}>
+                    <td class="ps-4 fw-bold text-dark">{{ entry.day_of_week }}</td>
+                    <td><span class="badge bg-light text-dark border"><i class="fa-regular fa-clock me-1 text-primary"></i> {{ entry.time_slot }}</span></td>
+                    <td class="fw-semibold">{{ entry.course_code }}</td>
+                    <td>
+                        <div class="small fw-bold">{{ entry.faculty_name }}</div>
+                        {% if entry.faculty_name == faculty.name %}
+                        <div class="text-primary" style="font-size: 10px;">(You)</div>
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        <span class="px-3 py-1 bg-white border rounded shadow-sm small fw-bold text-secondary">{{ entry.room_no }}</span>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="5" class="text-center py-5 text-muted">No timetable entries found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+.table-primary.table-opacity-10 {
+    background-color: rgba(13, 110, 253, 0.05) !important;
+}
+</style>
+{% endblock %}

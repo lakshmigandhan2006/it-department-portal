@@ -1,0 +1,82 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Manage Faculty{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Add New Faculty</h5>
+    <form action="/admin/faculty/add" method="post" enctype="multipart/form-data" class="row g-3">
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Full Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label small fw-bold text-muted">Designation</label>
+            <input type="text" name="designation" class="form-control" placeholder="Designation" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Email</label>
+            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label small fw-bold text-muted">Phone</label>
+            <input type="text" name="phone" class="form-control" placeholder="Phone Number" required>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label small fw-bold text-muted">Subject</label>
+            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Department</label>
+            <input type="text" name="department" class="form-control" placeholder="Department" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Username</label>
+            <input type="text" name="username" class="form-control" placeholder="Username" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="col-md-3 d-flex align-items-end gap-2">
+            <div class="w-100">
+                <label class="form-label small fw-bold text-muted">Photo</label>
+                <input type="file" name="photo" class="form-control" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-gradient px-3" style="height: 46px;"><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for faculty in faculties %}
+            <tr>
+                <td class="text-muted fw-bold">#{{ faculty.id }}</td>
+                <td class="fw-semibold text-dark">{{ faculty.name }}</td>
+                <td>{{ faculty.designation }}</td>
+                <td>{{ faculty.email }}</td>
+                <td>{{ faculty.phone }}</td>
+                <td class="text-end">
+                    <a href="/admin/faculty/edit/{{ faculty.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/faculty/delete/{{ faculty.id }}" class="btn btn-sm btn-light text-danger rounded-circle" title="Delete" onclick="return confirm('Remove?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6" class="text-center py-4 text-muted">No faculty records found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}IT Department Portal{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Public Navbar / University Header -->
+    {% block navbar %}
+    <!-- Part 1: Top Red Header Segment -->
+    <header class="university-header position-relative shadow-sm" style="background-color: #8B0000; z-index: 10;">
+        <div class="container">
+            
+            <!-- Mobile Navbar Toggle -->
+            <div class="d-md-none text-end p-3">
+                <button class="btn btn-outline-light btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+                    <i class="fa-solid fa-bars"></i> Menu
+                </button>
+            </div>
+            
+            <!-- Mobile Collapse Layout -->
+            <div class="collapse d-md-none text-start p-3 bg-dark bg-opacity-25 rounded-3 mb-3" id="mobileNav">
+                <ul class="nav flex-column fw-medium">
+                    <li class="nav-item"><a class="nav-link nav-link-underline py-2 ps-3" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline py-2 ps-3" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline py-2 ps-3" href="/faculty">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline py-2 ps-3" href="/notices">Notices</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline py-2 ps-3" href="/achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline py-2 ps-3" href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Desktop Split Layout -->
+            <div class="d-none d-md-flex align-items-center justify-content-center" style="min-height: 120px;">
+                <!-- Left Nav -->
+                <ul class="nav fw-medium fs-6" style="flex: 1; justify-content: flex-end;">
+                    <li class="nav-item"><a class="nav-link nav-link-underline px-3" href="/notices">Notices</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline px-3" href="/achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline px-3 pe-4" href="/contact">Contact</a></li>
+                </ul>
+
+                <!-- Center Crest -->
+                <div class="text-center px-4" style="flex: 0 0 auto; z-index: 20; transform: translateY(15px);">
+                    <a href="/" class="d-inline-block text-decoration-none">
+                        <img src="/static/images/crest.png" alt="University Crest" class="crest-logo" style="max-width: 170px;">
+                    </a>
+                </div>
+
+                <!-- Right Nav -->
+                <ul class="nav fw-medium fs-6" style="flex: 1; justify-content: flex-start;">
+                    <li class="nav-item"><a class="nav-link nav-link-underline px-3 ps-4" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline px-3" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-underline px-3" href="/faculty">Faculty</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- Part 2: White Bottom Strip for Buttons -->
+    <div class="bg-white py-3 shadow-sm position-relative" style="z-index: 5;">
+        <div class="container text-center">
+            
+            <!-- Mobile Fallback Branding (Only visible on small strings if crest isn't rendered floating) -->
+            <div class="d-md-none mb-3 mt-4 text-center">
+                <a href="/" class="d-inline-block text-decoration-none">
+                    <img src="/static/images/crest.png" alt="University Crest" class="crest-logo mb-2" style="max-width: 140px;">
+                </a>
+                <h2 class="h5 fw-bold text-dark mb-1">B.Sc Information Technology</h2>
+                <h1 class="small fw-normal text-muted mb-0 font-monospace">IT Department Portal</h1>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3 flex-wrap mt-md-4 mt-lg-0">
+                <a class="btn white-btn-red-text rounded-pill px-4 fw-bold shadow-sm hover-lift" href="/student-auth/login"><i class="fa-solid fa-user-graduate me-2"></i>Student Portal</a>
+                <a class="btn white-btn-red-text rounded-pill px-4 fw-bold shadow-sm hover-lift" href="/faculty-auth/login"><i class="fa-solid fa-chalkboard-user me-2"></i>Faculty Portal</a>
+                <a class="btn red-btn-white-text rounded-pill px-4 fw-bold shadow-sm hover-lift" href="/admin-auth/login"><i class="fa-solid fa-shield-halved me-2"></i>Admin Login</a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block footer %}
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5 border-top border-secondary">
+        <div class="container">
+            <div class="row gy-4 mb-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-microchip me-2 text-info"></i>IT Dept Portal</h5>
+                    <p class="text-secondary small pe-lg-4">
+                        Empowering students with next-generation academic tools and resources. Shaping the future of technology leaders through quality education.
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="fw-bold mb-3 text-uppercase small text-muted">Quick Links</h6>
+                    <ul class="list-unstyled flex-column d-flex gap-2 small">
+                        <li><a href="/" class="text-white text-decoration-none opacity-75 text-hover-white">Home</a></li>
+                        <li><a href="/about" class="text-white text-decoration-none opacity-75 text-hover-white">About Us</a></li>
+                        <li><a href="/faculty" class="text-white text-decoration-none opacity-75 text-hover-white">Faculty</a></li>
+                        <li><a href="/notices" class="text-white text-decoration-none opacity-75 text-hover-white">Notices</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h6 class="fw-bold mb-3 text-uppercase small text-muted">Resources</h6>
+                    <ul class="list-unstyled flex-column d-flex gap-2 small">
+                        <li><a href="/achievements" class="text-white text-decoration-none opacity-75 text-hover-white">Achievements</a></li>
+                        <li><a href="/contact" class="text-white text-decoration-none opacity-75 text-hover-white">Contact</a></li>
+                        <li><a href="/student-auth/login" class="text-white text-decoration-none opacity-75 text-hover-white">Student Portal</a></li>
+                        <li><a href="/admin-auth/login" class="text-white text-decoration-none opacity-75 text-hover-white">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold mb-3 text-uppercase small text-muted">Contact Us</h6>
+                    <ul class="list-unstyled flex-column d-flex gap-2 small text-secondary">
+                        <li><i class="fa-solid fa-location-dot me-2"></i> 123 University Road, Tech City, 10001</li>
+                        <li><i class="fa-solid fa-envelope me-2"></i> contact@itdept.edu</li>
+                        <li><i class="fa-solid fa-phone me-2"></i> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row pt-3 border-top border-secondary text-center">
+                <div class="col-12">
+                    <p class="mb-0 text-secondary small">&copy; 2026 Information Technology Department. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

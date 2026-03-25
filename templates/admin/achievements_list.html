@@ -1,0 +1,56 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Adievements Log{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Add Achievement</h5>
+    <form action="/admin/achievements/add" method="post" class="row g-3">
+        <div class="col-md-3">
+            <input type="text" name="title" class="form-control" placeholder="Achievement Title" required>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="student_name" class="form-control" placeholder="Student Name" required>
+        </div>
+        <div class="col-md-2">
+            <input type="date" name="date" class="form-control" required>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="description" class="form-control" placeholder="Description/Event" required>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-gradient w-100"><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Student</th>
+                <th>Achievement</th>
+                <th>Description</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in achievements %}
+            <tr>
+                <td class="text-muted"><i class="fa-regular fa-calendar me-2"></i>{{ a.date }}</td>
+                <td class="fw-bold text-dark">{{ a.student_name }}</td>
+                <td class="fw-semibold text-primary">{{ a.title }}</td>
+                <td class="small">{{ a.description }}</td>
+                <td class="text-end">
+                    <a href="/admin/achievements/edit/{{ a.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/achievements/delete/{{ a.id }}" class="btn btn-sm btn-light text-danger rounded-circle" title="Delete" onclick="return confirm('Remove?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="text-center py-4 text-muted">No achievements found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

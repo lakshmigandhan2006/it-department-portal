@@ -1,0 +1,56 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Manage Students{% endblock %}
+
+{% block content %}
+<div class="mb-4 text-end">
+    <a href="/admin/students/add" class="btn btn-gradient px-4"><i class="fa-solid fa-plus me-2"></i> Add New Student</a>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>UMIS ID</th>
+                <th>Year</th>
+                <th>Attendance</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td class="text-muted fw-bold">#{{ student.id }}</td>
+                <td class="fw-semibold text-dark">
+                    {% if student.photo %}
+                    <img src="/{{ student.photo }}" alt="." class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;">
+                    {% endif %}
+                    {{ student.name }}
+                </td>
+                <td>{{ student.roll_no }}</td>
+                <td><span class="badge bg-light text-dark border">{{ student.umis_id }}</span></td>
+                <td>{{ student.year }}</td>
+                <td>
+                    <div class="progress" style="height: 8px; width: 80px;">
+                        <div class="progress-bar {{ 'bg-danger' if student.attendance_percentage < 75 else 'bg-success' }}" style="--bar-width: {{ student.attendance_percentage }}%; width: var(--bar-width);"></div>
+                    </div>
+                    <small class="text-muted">{{ student.attendance_percentage }}%</small>
+                </td>
+                <td class="text-end">
+                    <a href="/admin/students/id_card/{{ student.id }}" target="_blank" class="btn btn-sm btn-light text-info me-1 rounded-circle" title="ID Card"><i class="fa-solid fa-id-card"></i></a>
+                    <a href="/admin/students/edit/{{ student.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/students/delete/{{ student.id }}" class="btn btn-sm btn-light text-danger rounded-circle" onclick="return confirm('Delete this student?')" title="Delete"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" class="text-center py-4 text-muted">No students found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

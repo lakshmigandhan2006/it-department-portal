@@ -1,0 +1,36 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Edit Exam: {{ exam.title }}{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mx-auto" style="max-width: 600px;">
+    <h5 class="fw-bold mb-3">Edit Exam Details</h5>
+    <form action="/admin/exams/edit/{{ exam.id }}" method="post" class="row g-3">
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Exam Title</label>
+            <input type="text" name="title" class="form-control" value="{{ exam.title }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Date & Time</label>
+            <!-- Using the raw string, assuming it's in a format compatible with datetime-local or just text -->
+            <input type="datetime-local" name="date" class="form-control" value="{{ exam.date }}" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label text-secondary fw-semibold">Course Code</label>
+            <input type="text" name="course_code" class="form-control" value="{{ exam.course_code }}" required>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Status</label>
+            <select name="status" class="form-select form-control">
+                <option value="Upcoming" {% if exam.status == 'Upcoming' %}selected{% endif %}>Upcoming</option>
+                <option value="Completed" {% if exam.status == 'Completed' %}selected{% endif %}>Completed</option>
+                <option value="Cancelled" {% if exam.status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+            </select>
+        </div>
+        <div class="col-md-12 text-end mt-4">
+            <a href="/admin/exams" class="btn btn-light px-4 me-2 border">Cancel</a>
+            <button type="submit" class="btn btn-gradient px-4"><i class="fa-solid fa-save me-2"></i> Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

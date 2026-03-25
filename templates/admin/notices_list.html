@@ -1,0 +1,48 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Manage Notices{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Post New Notice</h5>
+    <form action="/admin/notices/add" method="post" class="row g-3">
+        <div class="col-md-4">
+            <input type="text" name="title" class="form-control" placeholder="Notice Title" required>
+        </div>
+        <div class="col-md-6">
+            <input type="text" name="content" class="form-control" placeholder="Notice Content" required>
+        </div>
+        <div class="col-md-2 text-end">
+            <button type="submit" class="btn btn-gradient w-100">Publish <i class="fa-solid fa-paper-plane ms-1"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Date Posted</th>
+                <th>Title</th>
+                <th>Content Snippet</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for notice in notices %}
+            <tr>
+                <td class="text-muted"><small>{{ notice.date_posted.strftime('%d %b %Y, %H:%M') }}</small></td>
+                <td class="fw-semibold text-dark">{{ notice.title }}</td>
+                <td class="text-muted text-truncate" style="max-width: 300px;">{{ notice.content }}</td>
+                <td class="text-end">
+                    <a href="/admin/notices/edit/{{ notice.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/notices/delete/{{ notice.id }}" class="btn btn-sm btn-light text-danger rounded-circle" title="Delete" onclick="return confirm('Delete notice?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center py-4 text-muted">No notices found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

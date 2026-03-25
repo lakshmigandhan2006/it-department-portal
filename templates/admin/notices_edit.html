@@ -1,0 +1,23 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Edit Notice: {{ notice.title }}{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mx-auto" style="max-width: 600px;">
+    <h5 class="fw-bold mb-3">Edit Notice Details</h5>
+    <form action="/admin/notices/edit/{{ notice.id }}" method="post" class="row g-3">
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Notice Title</label>
+            <input type="text" name="title" class="form-control" value="{{ notice.title }}" required>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Notice Content</label>
+            <textarea name="content" class="form-control" rows="5" required>{{ notice.content }}</textarea>
+        </div>
+        <div class="col-md-12 text-end mt-4">
+            <a href="/admin/notices" class="btn btn-light px-4 me-2 border">Cancel</a>
+            <button type="submit" class="btn btn-gradient px-4"><i class="fa-solid fa-save me-2"></i> Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

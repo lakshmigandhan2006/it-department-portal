@@ -1,0 +1,55 @@
+{% extends "faculty/faculty_base.html" %}
+
+{% block header %}Faculty Notices{% endblock %}
+
+{% block faculty_content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Post New Notice</h5>
+    <form action="/faculty/notices/post" method="post" class="row g-3">
+        <div class="col-md-8">
+            <label class="form-label small fw-bold text-muted">Title</label>
+            <input type="text" name="title" class="form-control" placeholder="Notice Heading" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label small fw-bold text-muted">Type</label>
+            <select name="type" class="form-select">
+                <option value="General">General</option>
+                <option value="Academic">Academic</option>
+                <option value="Exam">Exam</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <label class="form-label small fw-bold text-muted">Content</label>
+            <textarea name="content" class="form-control" rows="3" placeholder="Explain the notice detail..." required></textarea>
+        </div>
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-gradient px-5 py-2"><i class="fa-solid fa-paper-plane me-2"></i> Post Notice</button>
+        </div>
+    </form>
+</div>
+
+<div class="row g-4">
+    {% for notice in notices %}
+    <div class="col-md-6">
+        <div class="glass-card p-4 h-100 position-relative">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary">{{ notice.type }}</span>
+                <span class="text-muted small"><i class="fa-regular fa-clock me-1"></i> {{ notice.date_posted.strftime('%d %b') }}</span>
+            </div>
+            <h5 class="fw-bold text-dark">{{ notice.title }}</h5>
+            <p class="text-muted small mb-3">{{ notice.content }}</p>
+            <div class="text-end">
+                <a href="/faculty/notices/delete/{{ notice.id }}" class="text-danger small text-decoration-none hover-lift d-inline-block" onclick="return confirm('Remove this notice?')">
+                    <i class="fa-solid fa-trash me-1"></i> Delete
+                </a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12 text-center py-5 text-muted">
+        <i class="fa-solid fa-bullhorn fa-3x mb-3 opacity-25"></i>
+        <p>No notices posted by you yet.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

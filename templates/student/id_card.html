@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ student.name }} - ID Card</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #ec4899;
+            --dark: #1e293b;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .id-card-container {
+            width: 320px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23f1f5f9" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
+        }
+        .id-card-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 20px 15px 60px 15px;
+            border-bottom-left-radius: 50% 20px;
+            border-bottom-right-radius: 50% 20px;
+        }
+        .id-card-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .id-card-header p {
+            margin: 5px 0 0;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        .photo-container {
+            width: 120px;
+            height: 120px;
+            margin: -50px auto 15px;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-info {
+            text-align: center;
+            padding: 0 20px 25px;
+        }
+        .user-info h3 {
+            margin: 0 0 5px;
+            color: var(--dark);
+            font-size: 1.4rem;
+        }
+        .user-info .course {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 15px;
+            text-align: left;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e1;
+        }
+        .details-grid strong {
+            color: #64748b;
+            font-weight: 600;
+        }
+        .details-grid span {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .id-card-footer {
+            background-color: #f8fafc;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+        .barcode {
+            margin: 10px auto 0;
+            height: 30px;
+            width: 80%;
+            background: repeating-linear-gradient(90deg, #1e293b, #1e293b 2px, transparent 2px, transparent 4px, #1e293b 4px, #1e293b 5px, transparent 5px, transparent 8px);
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .id-card-container { box-shadow: none; border: 1px solid #cbd5e1; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="id-card-container">
+        <div class="id-card-header">
+            <h2>IT DEPARTMENT PORTAL</h2>
+            <p>Student Identity Card</p>
+        </div>
+        
+        <div class="photo-container">
+            {% if student.photo %}
+            <img src="/{{ student.photo }}" alt="Student Photo">
+            {% else %}
+            <!-- Placeholder if no photo -->
+            <div style="width:100%; height:100%; border-radius:50%; background:#e2e8f0; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:3rem; font-weight:bold;">
+                {{ student.name[0] | upper }}
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="user-info">
+            <h3>{{ student.name }}</h3>
+            <div class="course">{{ student.year }}</div>
+            
+            <div class="details-grid">
+                <strong>Roll No:</strong> <span>{{ student.roll_no }}</span>
+                <strong>UMIS ID:</strong> <span>{{ student.umis_id }}</span>
+                <strong>DOB:</strong> <span>{{ student.dob }}</span>
+                <strong>Blood Grp:</strong> <span style="color:#ef4444">{{ student.blood_group }}</span>
+            </div>
+        </div>
+        
+        <div class="id-card-footer">
+            VALID FOR ACADEMIC DURATION
+            <div class="barcode"></div>
+            <div style="margin-top: 5px; font-family: monospace; letter-spacing: 3px;">{{ student.umis_id }}</div>
+        </div>
+    </div>
+
+    <script>
+        // Use a small timeout to ensure styles and images load before popping print dialog
+        window.onload = function() {
+            setTimeout(function() {
+                window.print();
+            }, 500);
+        };
+    </script>
+</body>
+</html>

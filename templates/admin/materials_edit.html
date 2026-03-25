@@ -1,0 +1,28 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Edit Material: {{ material.title }}{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mx-auto" style="max-width: 600px;">
+    <h5 class="fw-bold mb-3">Edit Study Material</h5>
+    <form action="/admin/materials/edit/{{ material.id }}" method="post" enctype="multipart/form-data" class="row g-3">
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Material Title</label>
+            <input type="text" name="title" class="form-control" value="{{ material.title }}" required>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Course Code</label>
+            <input type="text" name="course_code" class="form-control" value="{{ material.course_code }}" required>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label text-secondary fw-semibold">Update File (optional)</label>
+            <input type="file" name="file" class="form-control">
+            <small class="text-muted mt-1 d-block">Leave empty to keep the currently uploaded file.</small>
+        </div>
+        <div class="col-md-12 text-end mt-4">
+            <a href="/admin/materials" class="btn btn-light px-4 me-2 border">Cancel</a>
+            <button type="submit" class="btn btn-gradient px-4"><i class="fa-solid fa-save me-2"></i> Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

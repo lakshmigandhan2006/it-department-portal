@@ -1,0 +1,68 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Manage Exams{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4 mb-4">
+    <h5 class="fw-bold mb-3">Schedule Exam</h5>
+    <form action="/admin/exams/add" method="post" class="row g-3">
+        <div class="col-md-4">
+            <input type="text" name="title" class="form-control" placeholder="Exam Title (e.g. Mid Term 1)" required>
+        </div>
+        <div class="col-md-3">
+            <input type="datetime-local" name="date" class="form-control" required>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="course_code" class="form-control" placeholder="Course Code" required>
+        </div>
+        <div class="col-md-2">
+            <select name="status" class="form-select form-control">
+                <option value="Upcoming">Upcoming</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-gradient w-100"><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive table-glass">
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Title</th>
+                <th>Date & Time</th>
+                <th>Status</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exam in exams %}
+            <tr>
+                <td class="fw-bold text-primary">{{ exam.course_code }}</td>
+                <td class="fw-semibold text-dark">{{ exam.title }}</td>
+                <td class="text-muted"><i class="fa-regular fa-clock me-2"></i>{{ exam.date }}</td>
+                <td>
+                    {% if exam.status == 'Upcoming' %}
+                        <span class="badge bg-warning text-dark">{{ exam.status }}</span>
+                    {% elif exam.status == 'Completed' %}
+                        <span class="badge bg-success">{{ exam.status }}</span>
+                    {% else %}
+                        <span class="badge bg-danger">{{ exam.status }}</span>
+                    {% endif %}
+                </td>
+                <td class="text-end">
+                    <a href="/admin/exams/edit/{{ exam.id }}" class="btn btn-sm btn-light text-primary me-1 rounded-circle" title="Edit"><i class="fa-solid fa-pen"></i></a>
+                    <a href="/admin/exams/delete/{{ exam.id }}" class="btn btn-sm btn-light text-danger rounded-circle" title="Delete" onclick="return confirm('Remove?')"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="text-center py-4 text-muted">No exams scheduled.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

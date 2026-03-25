@@ -1,0 +1,63 @@
+{% extends "admin/admin_base.html" %}
+
+{% block header %}Dashboard Overview{% endblock %}
+
+{% block content %}
+<div class="row g-4 mb-4">
+    <div class="col-md-4 col-xl-3">
+        <div class="glass-card stat-card border-start border-4 border-primary">
+            <h3 class="stat-value">{{ stats.students }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-user-group me-2"></i>Total Students</p>
+        </div>
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="glass-card stat-card border-start border-4 border-info">
+            <h3 class="stat-value">{{ stats.faculty }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-chalkboard-user me-2"></i>Total Faculty</p>
+        </div>
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="glass-card stat-card border-start border-4 border-success">
+            <h3 class="stat-value">{{ stats.exams }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-pen-to-square me-2"></i>Total Exams</p>
+        </div>
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="glass-card stat-card border-start border-4 border-warning">
+            <h3 class="stat-value">{{ stats.materials }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-book me-2"></i>Study Materials</p>
+        </div>
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="glass-card stat-card border-start border-4 border-danger">
+            <h3 class="stat-value">{{ stats.notices }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-bullhorn me-2"></i>Notices</p>
+        </div>
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="glass-card stat-card border-start border-4 border-primary">
+            <h3 class="stat-value">{{ stats.achievements }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-trophy me-2"></i>Achievements</p>
+        </div>
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="glass-card stat-card border-start border-4 border-info">
+            <h3 class="stat-value">{{ stats.timetable }}</h3>
+            <p class="stat-label mb-0"><i class="fa-solid fa-calendar-days me-2"></i>Timetable Entries</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="glass-card p-4">
+            <h4 class="fw-bold mb-3">Quick Actions</h4>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="/admin/students/add" class="btn btn-primary rounded-pill"><i class="fa-solid fa-plus me-2"></i>Add Student</a>
+                <a href="/admin/notices" class="btn btn-info text-white rounded-pill"><i class="fa-solid fa-plus me-2"></i>Post Notice</a>
+                <a href="/admin/materials" class="btn btn-success rounded-pill"><i class="fa-solid fa-upload me-2"></i>Upload Material</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

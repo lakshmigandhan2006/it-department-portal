@@ -1,0 +1,31 @@
+{% extends "student/student_base.html" %}
+
+{% block header %}Study Materials Hub{% endblock %}
+
+{% block content %}
+<div class="glass-card p-4">
+    <div class="row g-4">
+        {% for m in materials %}
+        <div class="col-md-6 col-lg-4">
+            <div class="d-flex align-items-center border rounded p-3 h-100 shadow-sm bg-white" style="transition: transform 0.2s;">
+                <div class="bg-danger bg-opacity-10 text-danger rounded p-3 me-3 d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-file-pdf fa-2x"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <h6 class="mb-1 fw-bold text-dark text-truncate" style="max-width: 150px;">{{ m.title }}</h6>
+                    <small class="d-block text-primary fw-semibold">{{ m.course_code }}</small>
+                    <small class="text-muted d-block mt-1">Uploaded: {{ m.uploaded_at.strftime('%Y-%m-%d') }}</small>
+                </div>
+                <div class="ms-2">
+                    <a href="/{{ m.file_path }}" target="_blank" class="btn btn-outline-primary rounded-circle"><i class="fa-solid fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <h5 class="text-muted">No study materials available at the moment.</h5>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
